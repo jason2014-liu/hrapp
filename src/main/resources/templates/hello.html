@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"></meta>
 <title>Insert title here</title>
+<script  th:inline="javascript">
+	var contextRoot = /*[[${#httpServletRequest.getContextPath()}]]*/;
+	document.write(contextRoot+"123");
+</script>
 </head>
 <body>
 	<h1 th:text="${address}"></h1>

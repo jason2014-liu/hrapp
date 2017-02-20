@@ -49,4 +49,14 @@ public class HelloController {
 	public List<Region> getAllRegions(){
 		return regionService.getAllRegions();
 	}
+	
+	@RequestMapping(value="/login")
+	public String toLoginPage(){
+		return "login";
+	}
+	
+	@RequestMapping(value="/index")
+	public String index(){
+		return "index";
+	}
 }

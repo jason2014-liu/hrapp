@@ -16,6 +16,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +39,7 @@ public class JdbcRegionRepositoryImpl implements RegionRepository {
 		namedJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
+	@Cacheable(value="demo")
 	@Override
 	public List<Region> getAllRegion() {
 		// TODO Auto-generated method stub
