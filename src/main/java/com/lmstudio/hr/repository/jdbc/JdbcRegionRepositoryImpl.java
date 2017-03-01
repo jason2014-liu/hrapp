@@ -39,7 +39,7 @@ public class JdbcRegionRepositoryImpl implements RegionRepository {
 		namedJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	@Cacheable(value="demo")
+	//@Cacheable(value="demo")
 	@Override
 	public List<Region> getAllRegion() {
 		// TODO Auto-generated method stub

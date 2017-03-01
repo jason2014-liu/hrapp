@@ -10,6 +10,10 @@
 */
 package com.lmstudio.hr.repository;
 
+import java.util.List;
+
+import com.lmstudio.hr.model.SysOrg;
+
 /**
 * TODO
 * @ClassName: OrgRepository
@@ -17,5 +21,9 @@ package com.lmstudio.hr.repository;
 */
 public interface OrgRepository {
 
+	void saveOrg(SysOrg org);
 	
+	List<SysOrg> findAllOrg();
+	
+	SysOrg findById(String Id);
 }

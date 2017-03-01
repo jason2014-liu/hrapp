@@ -23,8 +23,8 @@ import org.springframework.core.io.ClassPathResource;
  * @ClassName: EhcacheConfiguration
  * @author jason
  */
-@Configuration
-@EnableCaching
+//@Configuration
+//@EnableCaching
 public class EhcacheConfiguration {
 
 	@Bean
