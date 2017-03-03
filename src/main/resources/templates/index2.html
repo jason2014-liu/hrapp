@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>管理系统主页</title>
+<link rel="stylesheet"
+	th:href="@{/jquery-easyui-1.5.1/themes/default/easyui.css}"></link>
+<link rel="stylesheet" th:href="@{/jquery-easyui-1.5.1/themes/icon.css}"></link>
+<link rel="stylesheet" th:href="@{/zTree_v3-master/css/zTreeStyle/zTreeStyle}"></link>
+<script type="text/javascript"
+	th:src="@{/js/jquery-3.1.1.js}"></script>
+<script type="text/javascript"
+	th:src="@{/jquery-easyui-1.5.1/jquery.easyui.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/jquery-easyui-1.5.1/jquery.portal.js}"></script>
+<script type="text/javascript"
+	th:src="@{/zTree_v3-master/js/jquery.ztree.all.min.js}"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#leftpanel").accordion({
+			fit : true
+		});
+
+		$('#portalPanel').portal({
+			fit : true
+		});
+
+		// create the panel
+		var p1 = $('<div></div>').appendTo('body');
+		p1.panel({
+			title : '通知公告',
+			height : 150,
+			closable : true,
+			collapsible : true
+		});
+
+		var p2 = $('<div></div>').appendTo('body');
+		p2.panel({
+			title : '待办任务',
+			height : 150,
+			closable : true,
+			collapsible : true
+		});
+
+		// add the panel to portal
+		$('#portalPanel').portal('add', {
+			panel : p1,
+			columnIndex : 0
+		});
+		$('#portalPanel').portal('add', {
+			panel : p2,
+			columnIndex : 1
+		});
+	});
+</script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false"
+		style="height: 60px; background: #B3DFDA; padding: 10px">north
+		region</div>
+	<div data-options="region:'west',split:true,title:'West'"
+		style="width: 300px; padding: 10px;">
+		<div id="leftpanel" class="easyui-accordion" style="height: 300px;">
+			<div title="人力资源管理系统" data-options="iconCls:'icon-ok',"
+				style="overflow: auto; padding: 10px;">
+				<ul class="easyui-tree">
+					<li><span>人力资源管理系统</span>
+						<ul>
+							<li><span>人员管理</span></li>
+							<li><span>部门管理</span></li>
+						</ul></li>
+				</ul>
+			</div>
+			<div title="基础平台" data-options="iconCls:'icon-search'"
+				style="padding: 10px;">
+				<ul class="easyui-tree">
+					<li><span>平台功能</span>
+						<ul>
+							<li><span>权限管理</span>
+								<ul>
+									<li>账号管理</li>
+									<li>角色管理</li>
+									<li>资源管理</li>
+								</ul></li>
+							<li><span>系统配置</span>
+								<ul>
+									<li>数据字典管理</li>
+									<li>系统参数管理</li>
+								</ul></li>
+
+							<li><span>日志审计</span>
+								<ul>
+									<li>访问日志</li>
+									<li>行为日志</li>
+									<li>数据日志</li>
+								</ul></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div
+		data-options="region:'east',split:true,collapsed:true,title:'East'"
+		style="width: 100px; padding: 10px;">east region</div>
+	<div data-options="region:'south',border:false"
+		style="height: 50px; background: #A9FACD; padding: 10px;">south
+		region</div>
+	<div data-options="region:'center',title:'Center'">
+		<div id="portalPanel">
+			<div style="width: 33%"></div>
+			<div style="width: 33%"></div>
+			<div style="width: 33%"></div>
+		</div>
+	</div>
+</body>
+</html>
