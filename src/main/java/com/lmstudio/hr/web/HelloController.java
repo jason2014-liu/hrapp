@@ -50,7 +50,7 @@ public class HelloController {
 		return regionService.getAllRegions();
 	}
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value="/login2")
 	public String toLoginPage(){
 		return "login";
 	}

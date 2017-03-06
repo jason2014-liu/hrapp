@@ -43,9 +43,9 @@ public class JdbcOrgRepositoryImpl implements OrgRepository {
 		this.namedJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	final String SQL_INSERTORG = "insert into sys_org(id,name,parent_id,valid,sort_num) values(:id,:name,:parentId,:valid,:sortNum)";
-	final String SQL_FINDALL = "select id,name,parent_id,valid,sort_num from sys_org";
-	final String SQL_FINDORGBYID = "select id,name,parent_id,valid,sort_num from sys_org　where id = :id";
+	String SQL_INSERTORG = "insert into sys_org(id,name,parent_id,valid,sort_num) values(:id,:name,:parentId,:valid,:sortNum)";
+	String SQL_FINDALL = "select id,name,parent_id,valid,sort_num from sys_org";
+	String SQL_FINDORGBYID = "select id,name,parent_id,valid,sort_num from sys_org　where id = :id";
 	
 	@Override
 	public void saveOrg(SysOrg org) {
