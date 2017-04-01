@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>四川省网络监管系统--电子标识申请</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link
+	th:href="@{/bootstrap3.3.7/assets/css/ie10-viewport-bug-workaround.css}"
+	rel="stylesheet"></link>
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/dashboard.css}" rel="stylesheet"></link>
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="@{/bootstrap3.3.7/assets/js/ie-emulation-modes-warning.js}"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+	<form>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label> <input
+				type="email" class="form-control" id="exampleInputEmail1"
+				placeholder="Email"></input>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label> <input
+				type="password" class="form-control" id="exampleInputPassword1"
+				placeholder="Password"></input>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputFile">File input</label> <input type="file"
+				id="exampleInputFile"></input>
+			<p class="help-block">Example block-level help text here.</p>
+		</div>
+		<div class="checkbox">
+			<label> <input type="checkbox"> Check me out</input>
+			</label>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script th:src="@{/bootstrap3.3.7/js/bootstrap.min.js}"></script>
+	<!-- for collapse -->
+	<script th:src="@{/bootstrap3.3.7/js/transition.js}"></script>
+	<script th:src="@{/bootstrap3.3.7/js/collapse.js}"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	<script th:src="@{/bootstrap3.3.7/assets/js/vendor/holder.min.js}"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		th:src="@{/bootstrap3.3.7/assets/js/ie10-viewport-bug-workaround.js}"></script>
+
+</body>
+</html>

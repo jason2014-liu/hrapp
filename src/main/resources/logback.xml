@@ -1,0 +1,64 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		    <!-- encoders are assigned the type          ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d %-5level [%thread] %logger{0}: %msg%n
+			
+			</pattern>
+			<outputPatternAsHeader>true</outputPatternAsHeader>
+		</encoder>
+	</appender>
+
+	<!-- 
+	<appender name="ROLLING"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		   
+		<file>/home/weblogic/applogs/searchapp.log</file>
+		   
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			     
+			<fileNamePattern>searchapp-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			       
+			<maxFileSize>100MB</maxFileSize>
+			   
+			       
+			<maxHistory>60</maxHistory>
+			       
+			<totalSizeCap>20GB</totalSizeCap>
+			   
+		</rollingPolicy>
+		   
+		<encoder>
+			<pattern>%d %-5level [%thread] %logger{0}: %msg%n
+			</pattern>
+			<outputPatternAsHeader>true</outputPatternAsHeader>
+		</encoder>
+		 
+	</appender>
+	 -->
+
+
+	 
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		 
+	</root>
+
+	<!-- additivity的作用在于 children-logger是否使用 rootLogger配置的appender进行输出。 -->
+	<logger name="com.lmstudio.hr" level="DEBUG" additivity="false">
+		<!-- <appender-ref ref="ROLLING" /> -->
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<!-- 
+	<logger name="org.springframework.boot" level="INFO">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.springframework.scheduling">
+		<level value="info" />
+	</logger>
+	 -->
+	 
+</configuration>

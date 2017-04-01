@@ -76,4 +76,5 @@ public class RedisConfig extends CachingConfigurerSupport {
 	public CacheManager cacheManager(RedisTemplate redisTemplate) {
 		return new RedisCacheManager(redisTemplate);
 	}
+	
 }

@@ -13,4 +13,4 @@
 * @ClassName: package-info
 * @author jason
 */
-package com.lmstudio.hr.vo;
+package com.lmstudio.hr.web.vo;

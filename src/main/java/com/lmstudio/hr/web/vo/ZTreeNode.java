@@ -8,7 +8,7 @@
 * @Copyright
 * @Version 
 */
-package com.lmstudio.hr.vo;
+package com.lmstudio.hr.web.vo;
 
 /**
 * TODO

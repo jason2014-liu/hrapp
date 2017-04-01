@@ -12,6 +12,7 @@ package com.lmstudio.hr.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lmstudio.hr.model.SysPermission;
 import com.lmstudio.hr.model.SysUser;
 import com.lmstudio.hr.service.UserService;
-import com.lmstudio.hr.vo.ZTreeNode;
+import com.lmstudio.hr.web.vo.ZTreeNode;
 
 /**
 * TODO
@@ -40,6 +41,18 @@ public class UserController {
 	public String login(){
 		
 		return "index2";
+	}
+	
+	@RequestMapping(value="/main")
+	public String toMain(){
+		
+		return "website/main";
+	}
+	
+	@RequestMapping(value="/main/apply")
+	public String toMainApply(){
+		
+		return "website/apply";
 	}
 	
 	@RequestMapping(value= "/getMenus", method=RequestMethod.POST)

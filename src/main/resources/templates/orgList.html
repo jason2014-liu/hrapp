@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>组织机构管理主页</title>
+<link rel="stylesheet"
+	th:href="@{/jquery-easyui-1.5.1/themes/bootstrap/easyui.css}"></link>
+<link rel="stylesheet" th:href="@{/jquery-easyui-1.5.1/themes/icon.css}"></link>
+<link rel="stylesheet"
+	th:href="@{/zTree_v3-master/css/zTreeStyle/zTreeStyle.css}"></link>
+<script type="text/javascript" th:src="@{/js/jquery-3.1.1.js}"></script>
+<script type="text/javascript"
+	th:src="@{/jquery-easyui-1.5.1/jquery.easyui.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/zTree_v3-master/js/jquery.ztree.all.min.js}"></script>
+<script th:inline="javascript">
+var contextPath = /*[[@{/}]]*/'';
+
+function doSearch(){
+    $('#orgTable').datagrid('load',{
+    	name: $('#form\\.name').val(),
+        parentId: $('#form\\.parentId').val()
+    });
+}
+
+
+	var setting = {
+		check: {
+			enable: true,
+			chkStyle: "radio",
+			radioType: "all"
+		},
+		data: {
+			simpleData : {
+				enable : true,
+				idKey: "id",
+				pIdKey: "pId",
+				rootPId: null
+			}
+		},
+		callback: {
+			onCheck: zTreeOnCheck
+		}
+	};
+	
+	
+	//显示树
+    function showOrgTree() {
+        var parentOrgObj = $('#parentOrgName');
+        var parentOrgOffset = $('#parentOrgName').offset();
+        $("#orgDiv").css({ left: parentOrgOffset.left + "px", top: parentOrgOffset.top + parentOrgObj.outerHeight() + "px" }).slideDown("fast");
+        $("body").bind("mousedown", onBodyDown);
+	}
+    //隐藏树
+    function hideOrgTree() {
+        $("#orgDiv").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }        
+    function onBodyDown(event) {
+        if (!(event.target.id == "parentOrgName" || $(event.target).parents("#parentOrgName").length > 0)) {
+        	hideOrgTree();
+        }
+    }
+    
+    function zTreeOnCheck(event, treeId, treeNode) {
+        //alert(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
+        $('#form\\.parentId').val(treeNode.id);
+        $('#parentOrgName').val(treeNode.name);
+    };
+    
+    function initialZtree() {
+		$.ajax({
+			type : "POST",
+			dataType : "json",
+			url : contextPath + "org/getOrgs",
+			error : function() {
+				alert('请求组织树数据失败');
+			},
+			success : function(data) {
+				//alert(data);  
+				$.fn.zTree.init($("#orgTree"), setting, data);
+			}
+		});
+    }
+$(function(){
+	
+	$('#orgTable').datagrid({
+	    url:contextPath + 'org/findOrgByPage',
+	    columns:[[
+	        {field:'id',title:'ID',width:'10%'},
+	        {field:'name',title:'名称',width:'50%'},
+	        {field:'parentId',title:'上级ID',width:'10%'},
+	        {field:'sortNum',title:'排序号',width:'30%',align:'right'}
+	    ]],
+	    toolbar:'#searchDiv',
+	    pagination:true
+	});
+	
+	initialZtree();
+	
+	$('#parentOrgName').click(function(){
+		showOrgTree();
+	})
+	
+});
+
+
+
+</script>
+</head>
+<body>
+
+<div id="searchDiv" style = "padding-bottom:10px;">
+    <span>名称:</span>
+    <input id="form.name" type="text"></input>
+    <span>上级ID:</span>
+    <input id="form.parentId" type="hidden"></input>
+    <input id="parentOrgName" type="text" readonly="readonly"></input>
+  	<div id="orgDiv" style="display: none; position: absolute; z-index:1">
+        <ul id="orgTree" class="ztree" style="margin-top: 0; width: 160px;">
+        </ul>
+    </div>
+    <a href="#" class="easyui-linkbutton"  onclick="doSearch()">查询</a>
+</div>
+
+<table id="orgTable"></table>
+</body>
+</html>
